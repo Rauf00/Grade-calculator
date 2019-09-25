@@ -1,19 +1,3 @@
-// document.getElementById("letter1").addEventListner("keyup", function(){
-//   var grade1 = document.getElementsByName("grade_1")[0].value;
-//   var outOf1 = document.getElementsByName("outOf_1")[0].value;
-//   var percent1 = grade1 / outOf1 * 100;
-//   if((percent1 >= 0) && (percent1 <= 54)){
-//     document.getElementById("letter1").innerHTML = "F";
-//   }
-// });
-// document.getElementById("letter1").addEventListner("keyup", function(){
-//   var grade1 = document.getElementsByName("grade_1")[0].value;
-//   var outOf1 = document.getElementsByName("outOf_1")[0].value;
-//   var percent1 = grade1 / outOf1 * 100;
-//   document.getElementById("percentage_1").innerHTML = percent1.toFixed(2);
-// });
-
-
 function clearr(){
  document.getElementsByName("grade_1")[0].value = "";
  document.getElementsByName("grade_2")[0].value = "";
@@ -32,6 +16,11 @@ function clearr(){
  document.getElementById("percentage_2").innerHTML = "";
  document.getElementById("percentage_3").innerHTML = "";
  document.getElementById("percentage_4").innerHTML = "";
+ document.getElementById("letter1").innerHTML = "";
+ document.getElementById("letter2").innerHTML = "";
+ document.getElementById("letter3").innerHTML = "";
+ document.getElementById("letter4").innerHTML = "";
+
 }
 
 function percentage1(){
@@ -65,13 +54,48 @@ function percentage2(){
   var grade2 = (document.getElementsByName("grade_2")[0].value);
   var percent2 = grade2 / outOf2 * 100;
   document.getElementById("percentage_2").innerHTML = percent2.toFixed(2);
-}
+  if((percent2 >= 0) && (percent2 <= 54)){
+      document.getElementById("letter2").innerHTML = "F";
+    }
+  else if ((percent2 >= 55) && (percent2 <= 64)){
+      document.getElementById("letter2").innerHTML = "D";
+    }
+  else if ((percent2 >= 65) && (percent2 <= 74)){
+      document.getElementById("letter2").innerHTML = "C-/C/C+";
+    }
+  else if ((percent2 >= 75) && (percent2 <= 84)){
+      document.getElementById("letter2").innerHTML = "B-/B/B+";
+    }
+  else if ((percent2 >= 85) && (percent2 <= 100)){
+      document.getElementById("letter2").innerHTML = "A-/A/A+";
+    }
+  else {
+    document.getElementById("letter2").innerHTML = "Invalid grade";
+  }}
 
 function percentage3(){
   var outOf3 = document.getElementsByName("outOf_3")[0].value;
   var grade3 = (document.getElementsByName("grade_3")[0].value);
   var percent3 = grade3 / outOf3 * 100;
   document.getElementById("percentage_3").innerHTML = percent3.toFixed(2);
+  if((percent3 >= 0) && (percent3 <= 54)){
+      document.getElementById("letter3").innerHTML = "F";
+    }
+  else if ((percent3 >= 55) && (percent3 <= 64)){
+      document.getElementById("letter3").innerHTML = "D";
+    }
+  else if ((percent3 >= 65) && (percent3 <= 74)){
+      document.getElementById("letter3").innerHTML = "C-/C/C+";
+    }
+  else if ((percent3 >= 75) && (percent3 <= 84)){
+      document.getElementById("letter3").innerHTML = "B-/B/B+";
+    }
+  else if ((percent3 >= 85) && (percent3 <= 100)){
+      document.getElementById("letter3").innerHTML = "A-/A/A+";
+    }
+  else {
+    document.getElementById("letter3").innerHTML = "Invalid grade";
+  }
 }
 
 function percentage4(){
@@ -79,6 +103,24 @@ function percentage4(){
   var grade4 = (document.getElementsByName("grade_4")[0].value);
   var percent4 = grade4 / outOf4 * 100;
   document.getElementById("percentage_4").innerHTML = percent4.toFixed(2);
+  if((percent4 >= 0) && (percent4 <= 54)){
+      document.getElementById("letter4").innerHTML = "F";
+    }
+  else if ((percent4 >= 55) && (percent4 <= 64)){
+      document.getElementById("letter4").innerHTML = "D";
+    }
+  else if ((percent4 >= 65) && (percent4 <= 74)){
+      document.getElementById("letter4").innerHTML = "C-/C/C+";
+    }
+  else if ((percent4 >= 75) && (percent4 <= 84)){
+      document.getElementById("letter4").innerHTML = "B-/B/B+";
+    }
+  else if ((percent4 >= 85) && (percent4 <= 100)){
+      document.getElementById("letter4").innerHTML = "A-/A/A+";
+    }
+  else {
+    document.getElementById("letter4").innerHTML = "Invalid grade";
+  }
 }
 
 function mean() {
@@ -117,8 +159,9 @@ function mean() {
       count++;
     }
   }
-  var meanValue = (grade1 + grade2 + grade3 + grade4)/count;
-  document.getElementById("output").innerHTML = meanValue;
+  var meanValue = ((grade1 + grade2 + grade3 + grade4)/count)*100;
+  var output = meanValue.toFixed(1);
+  document.getElementById("output").innerHTML = output + "/100";
 }
 
 function weighted() {
@@ -161,6 +204,8 @@ function weighted() {
       count++;
     }
   }
-  var weightedValue = (grade1*weight1 + grade2*weight2 + grade3*weight3 + grade4*weight4)/count;
-  document.getElementById("output").innerHTML = weightedValue;
+  var weightedValue = ((grade1*weight1 + grade2*weight2 + grade3*weight3 + grade4*weight4)/count)*100;
+  var output = weightedValue.toFixed(1);
+  document.getElementById("output").innerHTML = output + "/100";
+
 }
