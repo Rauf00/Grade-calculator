@@ -39,6 +39,25 @@ function percentage1(){
   var outOf1 = document.getElementsByName("outOf_1")[0].value;
   var percent1 = grade1 / outOf1 * 100;
   document.getElementById("percentage_1").innerHTML = percent1.toFixed(2);
+  if((percent1 >= 0) && (percent1 <= 54)){
+      document.getElementById("letter1").innerHTML = "F";
+    }
+  else if ((percent1 >= 55) && (percent1 <= 64)){
+      document.getElementById("letter1").innerHTML = "D";
+    }
+  else if ((percent1 >= 65) && (percent1 <= 74)){
+      document.getElementById("letter1").innerHTML = "C-/C/C+";
+    }
+  else if ((percent1 >= 75) && (percent1 <= 84)){
+      document.getElementById("letter1").innerHTML = "B-/B/B+";
+    }
+  else if ((percent1 >= 85) && (percent1 <= 100)){
+      document.getElementById("letter1").innerHTML = "A-/A/A+";
+    }
+  else {
+    document.getElementById("letter1").innerHTML = "Invalid grade";
+  }
+
 }
 
 function percentage2(){
@@ -61,7 +80,6 @@ function percentage4(){
   var percent4 = grade4 / outOf4 * 100;
   document.getElementById("percentage_4").innerHTML = percent4.toFixed(2);
 }
-
 
 function mean() {
   var outOf1 = document.getElementsByName("outOf_1")[0].value;
