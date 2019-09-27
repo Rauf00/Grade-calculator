@@ -15,6 +15,14 @@ html, body
   background-color: white;
   border: solid white;
 }
+#gradesInput{
+  float:right;
+  margin-right: 1%;
+}
+
+input.gradesTable{
+  width: 50px;
+}
 
 #firstRow{
   background-color: #DAD8D8;
@@ -29,7 +37,7 @@ div.table{
   background-color: #E6F0F4;
 }
 
-table, th, td {
+#table1, th, td {
   border: solid black;
   border-collapse: collapse;
 }
@@ -39,9 +47,15 @@ th, td {
   text-align: left;
 }
 
-table{
+#table1{
   width: 90%;
   margin: auto;
+}
+
+#table2{
+  border: solid black;
+  border-collapse: collapse;
+  width: 150px;
 }
 
 input{

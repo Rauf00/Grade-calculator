@@ -1,125 +1,101 @@
-function clearr(){
- document.getElementsByName("grade_1")[0].value = "";
- document.getElementsByName("grade_2")[0].value = "";
- document.getElementsByName("grade_3")[0].value = "";
- document.getElementsByName("grade_4")[0].value = "";
- document.getElementsByName("outOf_1")[0].value = "";
- document.getElementsByName("outOf_2")[0].value = "";
- document.getElementsByName("outOf_3")[0].value = "";
- document.getElementsByName("outOf_4")[0].value = "";
- document.getElementsByName("weight_1")[0].value = "";
- document.getElementsByName("weight_2")[0].value = "";
- document.getElementsByName("weight_3")[0].value = "";
- document.getElementsByName("weight_4")[0].value = "";
- document.getElementById("output").innerHTML = "";
- document.getElementById("percentage_1").innerHTML = "";
- document.getElementById("percentage_2").innerHTML = "";
- document.getElementById("percentage_3").innerHTML = "";
- document.getElementById("percentage_4").innerHTML = "";
- document.getElementById("letter1").innerHTML = "";
- document.getElementById("letter2").innerHTML = "";
- document.getElementById("letter3").innerHTML = "";
- document.getElementById("letter4").innerHTML = "";
-}
-
-function percentage1(){
-  var grade1 = document.getElementsByName("grade_1")[0].value;
-  var outOf1 = document.getElementsByName("outOf_1")[0].value;
+function percent(gradeInp, outOfInp, output){
+document.getElementsByName(gradeInp)[0].addEventListener("keyup", function(){
+  var grade = document.getElementsByName(gradeInp)[0].value;
+  var outOf = document.getElementsByName(outOfInp)[0].value;
+  var percent = grade / outOf * 100;
+  document.getElementById(output).innerHTML = percent.toFixed(2);
+});
+document.getElementsByName(outOfInp)[0].addEventListener("keyup", function(){
+  var grade1 = document.getElementsByName(gradeInp)[0].value;
+  var outOf1 = document.getElementsByName(outOfInp)[0].value;
   var percent1 = grade1 / outOf1 * 100;
-  document.getElementById("percentage_1").innerHTML = percent1.toFixed(2);
-  if((percent1 >= 0) && (percent1 <= 54)){
-      document.getElementById("letter1").innerHTML = "F";
-    }
-  else if ((percent1 >= 55) && (percent1 <= 64)){
-      document.getElementById("letter1").innerHTML = "D";
-    }
-  else if ((percent1 >= 65) && (percent1 <= 74)){
-      document.getElementById("letter1").innerHTML = "C-/C/C+";
-    }
-  else if ((percent1 >= 75) && (percent1 <= 84)){
-      document.getElementById("letter1").innerHTML = "B-/B/B+";
-    }
-  else if ((percent1 >= 85) && (percent1 <= 100)){
-      document.getElementById("letter1").innerHTML = "A-/A/A+";
-    }
-  else {
-    document.getElementById("letter1").innerHTML = "Invalid grade";
-  }
+  document.getElementById(output).innerHTML = percent1.toFixed(2);
+});
+
 }
 
-function percentage2(){
-  var outOf2 = document.getElementsByName("outOf_2")[0].value;
-  var grade2 = (document.getElementsByName("grade_2")[0].value);
-  var percent2 = grade2 / outOf2 * 100;
-  document.getElementById("percentage_2").innerHTML = percent2.toFixed(2);
-  if((percent2 >= 0) && (percent2 <= 54)){
-      document.getElementById("letter2").innerHTML = "F";
-    }
-  else if ((percent2 >= 55) && (percent2 <= 64)){
-      document.getElementById("letter2").innerHTML = "D";
-    }
-  else if ((percent2 >= 65) && (percent2 <= 74)){
-      document.getElementById("letter2").innerHTML = "C-/C/C+";
-    }
-  else if ((percent2 >= 75) && (percent2 <= 84)){
-      document.getElementById("letter2").innerHTML = "B-/B/B+";
-    }
-  else if ((percent2 >= 85) && (percent2 <= 100)){
-      document.getElementById("letter2").innerHTML = "A-/A/A+";
-    }
-  else {
-    document.getElementById("letter2").innerHTML = "Invalid grade";
-  }}
+percent("grade_1", "outOf_1", "percentage_1");
+percent("grade_2", "outOf_2", "percentage_2");
+percent("grade_3", "outOf_3", "percentage_3");
+percent("grade_4", "outOf_4", "percentage_4");
 
-function percentage3(){
-  var outOf3 = document.getElementsByName("outOf_3")[0].value;
-  var grade3 = (document.getElementsByName("grade_3")[0].value);
-  var percent3 = grade3 / outOf3 * 100;
-  document.getElementById("percentage_3").innerHTML = percent3.toFixed(2);
-  if((percent3 >= 0) && (percent3 <= 54)){
-      document.getElementById("letter3").innerHTML = "F";
+function letterGrades(gradeInp, outOfInp, output){
+  document.getElementsByName(outOfInp)[0].addEventListener("keyup", function(){
+    var toA = document.getElementById("gradesTable1").value;
+    var fromA =   document.getElementById("gradesTable11").value;
+    var toB = document.getElementById("gradesTable2").value;
+    var fromB =   document.getElementById("gradesTable22").value;
+    var toC = document.getElementById("gradesTable3").value;
+    var fromC =   document.getElementById("gradesTable33").value;
+    var toD = document.getElementById("gradesTable4").value;
+    var fromD =   document.getElementById("gradesTable44").value;
+    var toF = document.getElementById("gradesTable5").value;
+    var fromF =   document.getElementById("gradesTable55").value;
+
+    var grade = document.getElementsByName(gradeInp)[0].value;
+    var outOf = document.getElementsByName(outOfInp)[0].value;
+    var percent = grade / outOf * 100;
+    if((percent >= fromF) && (percent <= toF)){
+        document.getElementById(output).innerHTML = "F";
+      }
+    else if ((percent >= fromD) && (percent <= toD)){
+        document.getElementById(output).innerHTML = "D";
+      }
+    else if ((percent >= fromC) && (percent <= toC)){
+        document.getElementById(output).innerHTML = "C-/C/C+";
+      }
+    else if ((percent >= fromB) && (percent <= toB)){
+        document.getElementById(output).innerHTML = "B-/B/B+";
+      }
+    else if ((percent >= fromA) && (percent <= toA)){
+        document.getElementById(output).innerHTML = "A-/A/A+";
+      }
+    else {
+      document.getElementById(output).innerHTML = "Invalid grade";
     }
-  else if ((percent3 >= 55) && (percent3 <= 64)){
-      document.getElementById("letter3").innerHTML = "D";
+});
+
+  document.getElementsByName(gradeInp)[0].addEventListener("keyup", function(){
+    var toA = document.getElementById("gradesTable1").value;
+    var fromA =   document.getElementById("gradesTable11").value;
+    var toB = document.getElementById("gradesTable2").value;
+    var fromB =   document.getElementById("gradesTable22").value;
+    var toC = document.getElementById("gradesTable3").value;
+    var fromC =   document.getElementById("gradesTable33").value;
+    var toD = document.getElementById("gradesTable4").value;
+    var fromD =   document.getElementById("gradesTable44").value;
+    var toF = document.getElementById("gradesTable5").value;
+    var fromF =   document.getElementById("gradesTable55").value;
+
+    var grade = document.getElementsByName(gradeInp)[0].value;
+    var outOf = document.getElementsByName(outOfInp)[0].value;
+    var percent = grade / outOf * 100;
+
+    if((percent >= fromF) && (percent <= toF)){
+        document.getElementById(output).innerHTML = "F";
+      }
+    else if ((percent >= fromD) && (percent <= toD)){
+        document.getElementById(output).innerHTML = "D";
+      }
+    else if ((percent >= fromC) && (percent <= toC)){
+        document.getElementById(output).innerHTML = "C-/C/C+";
+      }
+    else if ((percent >= fromB) && (percent <= toB)){
+        document.getElementById(output).innerHTML = "B-/B/B+";
+      }
+    else if ((percent >= fromA) && (percent <= toA)){
+        document.getElementById(output).innerHTML = "A-/A/A+";
+      }
+    else {
+      document.getElementById(output).innerHTML = "Invalid grade";
     }
-  else if ((percent3 >= 65) && (percent3 <= 74)){
-      document.getElementById("letter3").innerHTML = "C-/C/C+";
-    }
-  else if ((percent3 >= 75) && (percent3 <= 84)){
-      document.getElementById("letter3").innerHTML = "B-/B/B+";
-    }
-  else if ((percent3 >= 85) && (percent3 <= 100)){
-      document.getElementById("letter3").innerHTML = "A-/A/A+";
-    }
-  else {
-    document.getElementById("letter3").innerHTML = "Invalid grade";
-  }
+});
 }
 
-function percentage4(){
-  var outOf4 = document.getElementsByName("outOf_4")[0].value;
-  var grade4 = (document.getElementsByName("grade_4")[0].value);
-  var percent4 = grade4 / outOf4 * 100;
-  document.getElementById("percentage_4").innerHTML = percent4.toFixed(2);
-  if((percent4 >= 0) && (percent4 <= 54)){
-      document.getElementById("letter4").innerHTML = "F";
-    }
-  else if ((percent4 >= 55) && (percent4 <= 64)){
-      document.getElementById("letter4").innerHTML = "D";
-    }
-  else if ((percent4 >= 65) && (percent4 <= 74)){
-      document.getElementById("letter4").innerHTML = "C-/C/C+";
-    }
-  else if ((percent4 >= 75) && (percent4 <= 84)){
-      document.getElementById("letter4").innerHTML = "B-/B/B+";
-    }
-  else if ((percent4 >= 85) && (percent4 <= 100)){
-      document.getElementById("letter4").innerHTML = "A-/A/A+";
-    }
-  else {
-    document.getElementById("letter4").innerHTML = "Invalid grade";
-  }
-}
+letterGrades("grade_1", "outOf_1","letter1");
+letterGrades("grade_2", "outOf_2","letter2");
+letterGrades("grade_3", "outOf_3","letter3");
+letterGrades("grade_4", "outOf_4","letter4");
 
 function mean() {
   var outOf1 = document.getElementsByName("outOf_1")[0].value;
@@ -210,4 +186,28 @@ function weighted() {
   weightedValue = ((grade1*weight1 + grade2*weight2 + grade3*weight3 + grade4*weight4)/(parseInt(weight1, 10) + parseInt(weight2, 10) + parseInt(weight3, 10) + parseInt(weight4, 10)))*100;
   var output = weightedValue.toFixed(1);
   document.getElementById("output").innerHTML = output + "/100";
+}
+
+function clearr(){
+ document.getElementsByName("grade_1")[0].value = "";
+ document.getElementsByName("grade_2")[0].value = "";
+ document.getElementsByName("grade_3")[0].value = "";
+ document.getElementsByName("grade_4")[0].value = "";
+ document.getElementsByName("outOf_1")[0].value = "";
+ document.getElementsByName("outOf_2")[0].value = "";
+ document.getElementsByName("outOf_3")[0].value = "";
+ document.getElementsByName("outOf_4")[0].value = "";
+ document.getElementsByName("weight_1")[0].value = "";
+ document.getElementsByName("weight_2")[0].value = "";
+ document.getElementsByName("weight_3")[0].value = "";
+ document.getElementsByName("weight_4")[0].value = "";
+ document.getElementById("output").innerHTML = "";
+ document.getElementById("percentage_1").innerHTML = "";
+ document.getElementById("percentage_2").innerHTML = "";
+ document.getElementById("percentage_3").innerHTML = "";
+ document.getElementById("percentage_4").innerHTML = "";
+ document.getElementById("letter1").innerHTML = "";
+ document.getElementById("letter2").innerHTML = "";
+ document.getElementById("letter3").innerHTML = "";
+ document.getElementById("letter4").innerHTML = "";
 }
