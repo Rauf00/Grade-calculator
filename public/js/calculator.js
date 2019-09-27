@@ -20,7 +20,6 @@ function clearr(){
  document.getElementById("letter2").innerHTML = "";
  document.getElementById("letter3").innerHTML = "";
  document.getElementById("letter4").innerHTML = "";
-
 }
 
 function percentage1(){
@@ -46,7 +45,6 @@ function percentage1(){
   else {
     document.getElementById("letter1").innerHTML = "Invalid grade";
   }
-
 }
 
 function percentage2(){
@@ -197,15 +195,19 @@ function weighted() {
   else{
     var grade4 = 0;
   }
-  var count = 0;
-  var array = [grade1, grade2, grade3, grade4];
-  for(var i = 0; i < 4; i++){
-    if(array[i] != 0){
-      count++;
-    }
+  if(weight1 == ""){
+    weight1 = 0;
   }
-  var weightedValue = ((grade1*weight1 + grade2*weight2 + grade3*weight3 + grade4*weight4)/count)*100;
+  if(weight2 == ""){
+    weight2 = 0;
+  }
+  if(weight3 == ""){
+    weight3 = 0;
+  }
+  if(weight4 == ""){
+    weight4 = 0;
+  }
+  weightedValue = ((grade1*weight1 + grade2*weight2 + grade3*weight3 + grade4*weight4)/(parseInt(weight1, 10) + parseInt(weight2, 10) + parseInt(weight3, 10) + parseInt(weight4, 10)))*100;
   var output = weightedValue.toFixed(1);
   document.getElementById("output").innerHTML = output + "/100";
-
 }
